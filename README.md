@@ -87,8 +87,10 @@ Response:
 
 10. Filtering by attributes:
 You need use attributes query parameter which is an associative array where key is the attribute name and value is an array of attribute values. For e.g:
-   
+
+```   
 $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+```
 This filter also aggregates all attribute values and it will group them by attribute name
 
 Aggregation response from this request:
@@ -104,25 +106,34 @@ Whole response:
 
 11. Sorting
 By name ascending:
-
+```
     /shop-api/products?channel=WEB_DE&sort[name]=asc
+```
 By price descending:
-
+```
     /shop-api/products?channel=WEB_DE&sort[price]=desc
+```
+
 By attribute ATTRIBUTE_CODE ascending:
-
+```
     /shop-api/products?channel=WEB_DE&sort[attributes][ATTRIBUTE_CODE]=asc
+```
 By price ascending, then by name descending:
-
+```
     /shop-api/products?channel=WEB_DE&sort[price]=asc&sort[name]=desc
+```
 Filtering by attribute
 By attribute name and value:
 
+```
     /shop-api/products?channel=WEB_DE&attributes[Attribute name][0]=value
+```
 By attribute code and value:
 
+```
     /shop-api/products?channel=WEB_DE&attributesByCode[ATTRIBUTE_CODE][0]=value
-    
+```
+
 Reindexing Elasticsearch
 The current implementation does not support updating Elasticsearch when an entity is updated. In order to stay up-to-date, run the following command:
 
